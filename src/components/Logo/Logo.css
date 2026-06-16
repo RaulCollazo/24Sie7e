@@ -1,0 +1,7 @@
+.logo {
+  width: clamp(380px, 38vw, 700px);
+  height: auto;
+
+  margin-left: clamp(20px, 2vw, 40px);
+  margin-top: clamp(12px, 1vw, 24px);
+}
