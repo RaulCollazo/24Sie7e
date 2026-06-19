@@ -4,6 +4,9 @@ from database import get_connection, init_db
 from schemas import ProductoOut, VentaRequest
 from datetime import datetime
 from schemas import VentaRequest
+from fastapi.staticfiles import StaticFiles
+import os
+
 VentaRequest.model_rebuild()  # after import
 
 app = FastAPI()
@@ -56,3 +59,7 @@ def crear_venta(data: VentaRequest):
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         conn.close()
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+dist_dir = os.path.join(ROOT, "dist")
+if os.path.exists(dist_dir):
+    app.mount("/", StaticFiles(directory=dist_dir, html=True), name="frontend")
