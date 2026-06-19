@@ -1,13 +1,26 @@
 import { useState } from "react";
 import "./SearchBar.css";
 
-function SearchBar() {
-  const productos = [
-    { nombre: "Yerba Taragüi x kg", precio: 2000, stock: 2 },
-    { nombre: "Yerba Playadito x kg", precio: 2200, stock: 3 },
-    { nombre: "Yerba THC x g", precio: 20000, stock: 0 },
-  ];
+type Producto = {
+  id: number;
+  nombre: string;
+  precio: number;
+  stock: number;
+};
 
+type SearchBarProps = {
+  onSelect: (producto: Producto) => void;
+  productos: Producto[];
+  carrito: Producto[];
+  onFinishBuying: () => void;
+};
+
+function SearchBar({
+  onSelect,
+  productos,
+  carrito,
+  onFinishBuying,
+}: SearchBarProps) {
   const [busqueda, setBusqueda] = useState("");
 
   const resultados = productos.filter((producto) =>
@@ -38,7 +51,11 @@ function SearchBar() {
         <div className="search-results">
           {resultados.length > 0 ? (
             resultados.map((producto) => (
-              <div key={producto.nombre} className="search-item">
+              <div
+                key={producto.id}
+                className="search-item"
+                onClick={() => onSelect(producto)}
+              >
                 <div className="item-title">{producto.nombre}</div>
 
                 <div className="item-subtitle">
@@ -52,6 +69,14 @@ function SearchBar() {
           )}
         </div>
       )}
+
+      <button
+        className="btn-finalizar"
+        disabled={carrito.length === 0}
+        onClick={onFinishBuying}
+      >
+        Finalizar Compra
+      </button>
     </div>
   );
 }

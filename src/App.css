@@ -15,10 +15,24 @@ body {
   padding-left: 20px;
 }
 
-/* Mueve el buscador */
+/* Fila que contiene carrito y buscador */
+.content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 40px;
+  padding: 0 50px;
+}
+
+/* Buscador */
 .searchbar-wrapper {
   display: flex;
-  justify-content: flex-end; /* derecha */
-  padding-right: 50px;
-  margin-top: 40px;
+  justify-content: flex-end;
+}
+
+/* Carrito */
+.carrito {
+  display: flex;
+  justify-content: flex-start;
 }

@@ -1,6 +1,5 @@
 .search-container {
-  width: 100%;
-  max-width: 500px;
+  width: clamp(350px, 40vw, 500px);
   position: relative;
 }
 
@@ -76,4 +75,22 @@
 
   font-size: 13px;
   color: #666;
+}
+
+.btn-finalizar {
+  margin-top: 12px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 18px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-finalizar:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
