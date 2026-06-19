@@ -54,7 +54,7 @@ function SearchBar({
               <div
                 key={producto.id}
                 className="search-item"
-                onClick={() => onSelect(producto)}
+                onClick={() => producto.stock > 0 && onSelect(producto)}
               >
                 <div className="item-title">{producto.nombre}</div>
 
