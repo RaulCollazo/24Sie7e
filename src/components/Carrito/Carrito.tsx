@@ -16,7 +16,7 @@ function Carrito({ items }: CarritoProps) {
 
   return (
     <div className="left-panel">
-      <h3>Precio</h3>
+      <h3> Precio</h3>
 
       {items.map((item, index) => (
         <div key={index}>
